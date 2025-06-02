@@ -1,0 +1,106 @@
+===Base de Dados acuprosys
+
+== Estrutura da tabela consulta
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|paciente_id|int(11)|Sim|NULL
+|data_consulta|datetime|Não|
+|observacoes|text|Sim|NULL
+|lembrete_enviado|tinyint(1)|Sim|0
+|valor_pago|decimal(10,2)|Sim|0.00
+|forma_pagamento|varchar(50)|Sim|NULL
+== Extraindo dados da tabela consulta
+
+|1|1|2025-06-04 17:00:14|WDADSA|0|212300.00|Cartão de Débito
+== Estrutura da tabela financeiro
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|tipo|enum(&#039;entrada&#039;, &#039;saida&#039;)|Não|
+|descricao|varchar(255)|Sim|NULL
+|valor|decimal(10,2)|Não|
+|data_lancamento|date|Não|
+|referencia_id|int(11)|Sim|NULL
+|paciente_id|int(11)|Sim|NULL
+== Extraindo dados da tabela financeiro
+
+== Estrutura da tabela foto_paciente
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|paciente_id|int(11)|Não|
+|foto|longblob|Não|
+|descricao|varchar(255)|Sim|NULL
+|data_upload|datetime|Sim|current_timestamp()
+== Extraindo dados da tabela foto_paciente
+
+== Estrutura da tabela paciente
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|nome|varchar(100)|Não|
+|nascimento|date|Sim|NULL
+|sexo|enum(&#039;Masculino&#039;, &#039;Feminino&#039;, &#039;Outro&#039;)|Sim|NULL
+|telefone|varchar(20)|Sim|NULL
+|email|varchar(100)|Sim|NULL
+|endereco|text|Sim|NULL
+|estado_civil|varchar(50)|Sim|NULL
+|profissao|varchar(100)|Sim|NULL
+|convenio|varchar(100)|Sim|NULL
+|observacoes|text|Sim|NULL
+|status_pagamento|enum(&#039;Pago&#039;, &#039;Pagando em parcelas&#039;, &#039;Em débito&#039;)|Sim|Pago
+|tipo_pagamento|enum(&#039;À vista&#039;, &#039;Parcelado&#039;)|Sim|À vista
+|data_cadastro|datetime|Sim|current_timestamp()
+|data_nascimento|date|Sim|NULL
+== Extraindo dados da tabela paciente
+
+|1|asdasdasdsa|NULL| |asdasdsadas|dasd|asdasdasd| | | | |NULL|NULL|2025-06-02 16:07:09|2025-06-02
+== Estrutura da tabela prontuario
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|paciente_id|int(11)|Sim|NULL
+|data_registro|datetime|Sim|current_timestamp()
+|queixas|text|Sim|NULL
+|diagnostico|text|Sim|NULL
+|tratamento|text|Sim|NULL
+|pontos_aplicados|text|Sim|NULL
+|profissional_id|int(11)|Sim|NULL
+== Extraindo dados da tabela prontuario
+
+== Estrutura da tabela sugestao_tratamento
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|queixa|varchar(255)|Sim|NULL
+|tratamento_sugerido|text|Sim|NULL
+|pontos_recomendados|text|Sim|NULL
+== Extraindo dados da tabela sugestao_tratamento
+
+== Estrutura da tabela usuario
+
+|------
+|Coluna|Tipo|Nulo|Predefinido
+|------
+|//**id**//|int(11)|Não|
+|**usuario**|varchar(50)|Não|
+|senha|varchar(100)|Não|
+|nome|varchar(100)|Não|
+|tipo|enum(&#039;admin&#039;, &#039;comum&#039;)|Sim|comum
+== Extraindo dados da tabela usuario
+
+|1|admin|admin|Administrador|admin
+|2|123|123|123|comum

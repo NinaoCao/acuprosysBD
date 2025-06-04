@@ -63,7 +63,7 @@
 |data_nascimento|date|Sim|NULL
 == Extraindo dados da tabela paciente
 
-|1|asdasdasdsa|NULL| |asdasdsadas|dasd|asdasdasd| | | | |NULL|NULL|2025-06-02 16:07:09|2025-06-02
+|1|asdasdasdsa|NULL|NULL|asdasdsadas|dasd|asdasdasd|NULL|NULL|NULL|NULL|Pago|À vista|2025-06-02 16:07:09|2025-06-02
 == Estrutura da tabela prontuario
 
 |------
@@ -77,6 +77,15 @@
 |tratamento|text|Sim|NULL
 |pontos_aplicados|text|Sim|NULL
 |profissional_id|int(11)|Sim|NULL
+|descricao|text|Sim|NULL
+|data|date|Sim|NULL
+|queixa_principal|text|Sim|NULL
+|historia_doenca|text|Sim|NULL
+|habitos_vida|text|Sim|NULL
+|sono|text|Sim|NULL
+|alimentacao|text|Sim|NULL
+|historico_familiar|text|Sim|NULL
+|observacoes|text|Sim|NULL
 == Extraindo dados da tabela prontuario
 
 == Estrutura da tabela sugestao_tratamento
@@ -96,7 +105,7 @@
 |Coluna|Tipo|Nulo|Predefinido
 |------
 |//**id**//|int(11)|Não|
-|**usuario**|varchar(50)|Não|
+|usuario|varchar(50)|Não|
 |senha|varchar(100)|Não|
 |nome|varchar(100)|Não|
 |tipo|enum(&#039;admin&#039;, &#039;comum&#039;)|Sim|comum

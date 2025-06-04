@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 02-Jun-2025 às 22:13
+-- Tempo de geração: 04-Jun-2025 às 20:56
 -- Versão do servidor: 10.4.24-MariaDB
 -- versão do PHP: 8.1.6
 
@@ -103,7 +103,7 @@ CREATE TABLE `paciente` (
 --
 
 INSERT INTO `paciente` (`id`, `nome`, `nascimento`, `sexo`, `telefone`, `email`, `endereco`, `estado_civil`, `profissao`, `convenio`, `observacoes`, `status_pagamento`, `tipo_pagamento`, `data_cadastro`, `data_nascimento`) VALUES
-(1, 'asdasdasdsa', NULL, '', 'asdasdsadas', 'dasd', 'asdasdasd', '', '', '', '', NULL, NULL, '2025-06-02 16:07:09', '2025-06-02');
+(1, 'asdasdasdsa', NULL, NULL, 'asdasdsadas', 'dasd', 'asdasdasd', NULL, NULL, NULL, NULL, 'Pago', 'À vista', '2025-06-02 16:07:09', '2025-06-02');
 
 -- --------------------------------------------------------
 
@@ -119,7 +119,16 @@ CREATE TABLE `prontuario` (
   `diagnostico` text DEFAULT NULL,
   `tratamento` text DEFAULT NULL,
   `pontos_aplicados` text DEFAULT NULL,
-  `profissional_id` int(11) DEFAULT NULL
+  `profissional_id` int(11) DEFAULT NULL,
+  `descricao` text DEFAULT NULL,
+  `data` date DEFAULT NULL,
+  `queixa_principal` text DEFAULT NULL,
+  `historia_doenca` text DEFAULT NULL,
+  `habitos_vida` text DEFAULT NULL,
+  `sono` text DEFAULT NULL,
+  `alimentacao` text DEFAULT NULL,
+  `historico_familiar` text DEFAULT NULL,
+  `observacoes` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -206,8 +215,7 @@ ALTER TABLE `sugestao_tratamento`
 -- Índices para tabela `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `usuario` (`usuario`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -241,7 +249,7 @@ ALTER TABLE `paciente`
 -- AUTO_INCREMENT de tabela `prontuario`
 --
 ALTER TABLE `prontuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `sugestao_tratamento`
@@ -263,26 +271,26 @@ ALTER TABLE `usuario`
 -- Limitadores para a tabela `consulta`
 --
 ALTER TABLE `consulta`
-  ADD CONSTRAINT `consulta_ibfk_1` FOREIGN KEY (`paciente_id`) REFERENCES `paciente` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `consulta_ibfk_1` FOREIGN KEY (`paciente_id`) REFERENCES `paciente` (`id`);
 
 --
 -- Limitadores para a tabela `financeiro`
 --
 ALTER TABLE `financeiro`
-  ADD CONSTRAINT `financeiro_ibfk_1` FOREIGN KEY (`paciente_id`) REFERENCES `paciente` (`id`) ON DELETE SET NULL;
+  ADD CONSTRAINT `financeiro_ibfk_1` FOREIGN KEY (`paciente_id`) REFERENCES `paciente` (`id`);
 
 --
 -- Limitadores para a tabela `foto_paciente`
 --
 ALTER TABLE `foto_paciente`
-  ADD CONSTRAINT `foto_paciente_ibfk_1` FOREIGN KEY (`paciente_id`) REFERENCES `paciente` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `foto_paciente_ibfk_1` FOREIGN KEY (`paciente_id`) REFERENCES `paciente` (`id`);
 
 --
 -- Limitadores para a tabela `prontuario`
 --
 ALTER TABLE `prontuario`
-  ADD CONSTRAINT `prontuario_ibfk_1` FOREIGN KEY (`paciente_id`) REFERENCES `paciente` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `prontuario_ibfk_2` FOREIGN KEY (`profissional_id`) REFERENCES `usuario` (`id`) ON DELETE SET NULL;
+  ADD CONSTRAINT `prontuario_ibfk_1` FOREIGN KEY (`paciente_id`) REFERENCES `paciente` (`id`),
+  ADD CONSTRAINT `prontuario_ibfk_2` FOREIGN KEY (`profissional_id`) REFERENCES `usuario` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
